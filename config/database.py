@@ -2,26 +2,36 @@ import os
 
 
 database = {
-        'connections': {
-            'mysql': {
-                'driver': 'mysql',
-                'host': os.getenv('DB_HOST', '127.0.0.1'),
-                'port': os.getenv('DB_PORT', '3306'),
-                'database': os.getenv('DB_DATABASE', 'flask'),
-                'username': os.getenv('DB_USERNAME', 'root'),
-                'password': os.getenv('DB_PASSWORD')
-            },
+    'connections': {
+        'sqlite': {
+            'driver': 'sqlite',
+            'host': os.getenv('DB_HOST', ''),
+            'port': os.getenv('DB_PORT', ''),
+            'database': os.getenv(
+                'DB_DATABASE', '../data/database.sqlite'
+            ),
+            'username': os.getenv('DB_USERNAME', ''),
+            'password': os.getenv('DB_PASSWORD', '')
+        },
+        'mysql': {
+            'driver': 'mysql',
+            'host': os.getenv('DB_HOST', '127.0.0.1'),
+            'port': os.getenv('DB_PORT', '3306'),
+            'database': os.getenv('DB_DATABASE', 'flask'),
+            'username': os.getenv('DB_USERNAME', 'root'),
+            'password': os.getenv('DB_PASSWORD')
+        },
 
-            'pgsql': {
-                'driver': 'pgsql',
-                'host': os.getenv('DB_HOST', '127.0.0.1'),
-                'port': os.getenv('DB_PORT', '5432'),
-                'database': os.getenv('DB_DATABASE', 'flask'),
-                'username': os.getenv('DB_USERNAME', 'root'),
-                'password': os.getenv('DB_PASSWORD')
-            }
+        'pgsql': {
+            'driver': 'pgsql',
+            'host': os.getenv('DB_HOST', '127.0.0.1'),
+            'port': os.getenv('DB_PORT', '5432'),
+            'database': os.getenv('DB_DATABASE', 'flask'),
+            'username': os.getenv('DB_USERNAME', 'root'),
+            'password': os.getenv('DB_PASSWORD')
         }
     }
+}
 
 
 def create_database_url():

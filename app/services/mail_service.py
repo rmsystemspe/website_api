@@ -16,10 +16,16 @@ def _send_async_mail(app, msg):
 
 
 def new_prospect_mail(prospect):
-    subject = f'¡Atención! Nuevo prospecto {prospect.id}'
-    sender = ('RMSolutions', 'no-reply@rmsolutions.pe')
-    recipents = ["venta@rmsolutions.pe"]
+    subject = f'¡Atención! Nuevo prospecto #{prospect.id}'
+    sender = ('RM Solutions Notificaciones', 'notificaciones@rmsolutions.pe')
+    recipents = ["info@rmsolutions.pe"]
     html = render_template('emails/new_prospect.html', prospect=prospect)
     msg = Message(subject, recipents, sender=sender)
     msg.html = html
-    Thread(target=_send_async_mail, args=(current_app._get_current_object(), msg)).start()
+    Thread(
+        target=_send_async_mail,
+        args=(
+            current_app._get_current_object(),
+            msg
+        )
+    ).start()

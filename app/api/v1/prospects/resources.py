@@ -2,14 +2,14 @@ from flask import request, Blueprint
 from flask_restful import Api, Resource
 
 from .schemas import ProspectSchema
-from ..models.prospect import Prospect
-from ..services.mail_service import new_prospect_mail
+from app.models.prospect import Prospect
+from app.services.mail_service import new_prospect_mail
 
-api_v1 = Blueprint('api_v1', __name__)
+api_prospect_v1 = Blueprint('api_prospect_v1', __name__)
 
 prospect_schema = ProspectSchema()
 
-api = Api(api_v1)
+api = Api(api_prospect_v1)
 
 
 class ProspectResource(Resource):
